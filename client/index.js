@@ -3,7 +3,7 @@ import './stylesheets/mystyles.css'
 
 console.log("Webpack Working!!");
 //Default Parameters ES6/2015
-let show = (m = "Hola") => {
+let show = (m = "Hot Module Replace Working") => {
     alert(m)
 };
 

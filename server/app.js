@@ -7,7 +7,43 @@ import logger from 'morgan';
 import indexRouter from '@s-routes/index';
 import usersRouter from '@s-routes/users';
 
+//IMPORTACION MODULOS DE WEBPACK
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from '../webpack.dev.config';
+import webpackDevConfig from '../webpack.dev.config';
+
+//CONSULTAR EL MODO EN QUE SE EJECUTA LA APLICACION
+const env = process.env.NODE_ENV   || 'development'; 
+
+//SE CREA LA APLICACION EXPRESS
 var app = express();
+
+//VERIFICANDO EL MODO DE EJECUCION DE LA APLICACION
+if(env === 'development'){
+  console.log('> Exceuting in Development Mode: Webpack Hot Reloading');
+  //PASO 1- AGREGANDO LA RUA DEL HMR
+  //reoad=true = habilita la recarga del frontend cuando hay cambios del codigo fuente del frontend
+  //timeout=1000: tiempo de espera entre recarga y recarga de la pagina
+  webpackConfig.entry = ['webpack-hot-middleware/client?reload=true&timeout=1000', webpackConfig.entry ];
+  
+  //PASO 2 - AGREGAMOS PLUGIN
+  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+  //PASO 3 - CREAR EL COMPILADOR DE WEBPACK
+  const compiler = webpack(webpackConfig);
+
+  //PASO 4 - AGREGANDO MIDDLEWARE A LA CADENA DE MIDDLEWARES DE LA APLICACION
+  app.use(webpackDevMiddleware(compiler,{
+    publicPath: webpackDevConfig.output.publicPath
+  }));
+
+  //PASO 5- AGREGANDO EL WEBPACK HOT MIDDLEWARE
+  app.use(webpackHotMiddleware(compiler));
+}else{
+  console.log('>Exceuting in Productions Mode...');
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
