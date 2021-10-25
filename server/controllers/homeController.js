@@ -5,12 +5,13 @@ const index = (req, res) => {
   });
 };
 
-const greeting = (req,res) => {
-  res.status(200).json({
-    message: 'Hola que tal'
-  });
+const greeting = (req, res) => {
+    res.status(200).json({
+        message: 'Hola Champ del FullStack Web',
+    });
 };
 
 export default {
-    index, 
+  index,
+  greeting,
 };

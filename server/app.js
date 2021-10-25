@@ -7,8 +7,8 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import winston from '@server/config/winston';
 
-import indexRouter from '@s-routes/index';
-import usersRouter from '@s-routes/users';
+// Importando el router principal
+import router from '@server/routes/index';
 
 // IPORTING CONFIGURATIONS
 import configTemplateEngine from '@s-config/template-engine'
@@ -66,8 +66,8 @@ app.use(
   express.static(path.join(__dirname, '..', 'public')),
 ); /* Parte y/o archivos estaticos ayuda a que pueda mandar la peticion mucho antes de arvhivos y/o imagenes */
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Instalando los enrutadores principal a la aplicacion express
+router.addRoutes(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,11 +1,16 @@
 /* eslint-disable prettier/prettier */
-import { Router } from 'express';
 // Importando el router de Home
-import home from './home';
+import homeRouter from './home';
+// Importando router de user
+import userRouter from './user';
 
-const router = new Router();
+// Agregando las rutas a la aplicación
+const addRoutes = (app) => {
+    app.use('/', homeRouter);
+    app.use('/user', userRouter);
+    return app;
+};
 
-/*  GET home page. */
-router.use('/', home);
-
-module.exports = router;
+export default {
+    addRoutes,
+};
