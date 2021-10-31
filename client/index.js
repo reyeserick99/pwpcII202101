@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
+/* eslint-disable prettier/prettier */
 import './stylesheets/style.css';
 import './stylesheets/mystyles.css';
+
