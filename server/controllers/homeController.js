@@ -12,7 +12,7 @@ const greeting = (req, res) => {
 };
 
 const about = (req, res) => {
-  res.render('home/about', {title: 'Acerca de ProjNotes'});
+  res.render('home/about', {title: 'Acerca de '});
 };
 
 export default {
