@@ -1,28 +1,49 @@
-<nav class="light-blue darken-4">
-  <div class="container">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">
-        &#128209;ProjNotes
+<!--Se crea la estructura del dropdown menu-->
+<ul id='dropdownMenu' class='dropdown-content'>
+  <li><a href='/projects'>
+      <i class='large material-icons' style='margin: 2px;'>list</i>
+      Listar Proyectos</a></li>
+  <li class='divider'></li>
+  <li><a href='/projects/add'>
+      <i class='large material-icons' style='margin: 2px;'>add_box</i>
+      Crear Proyecto</a></li>
+</ul>
+
+<nav class='light-blue darken-4'>
+  <div class='container'>
+    <div class='nav-wrapper'>
+      <a href='/' class='brand-logo'>
+        ProjNotes
       </a>
-      <ul class="right hide-on-med-and-down">
+      <ul class='right hide-on-med-and-down'>
         <li>
-          <a href="/">
+          <a href='/'>
             Inicio
           </a>
         </li>
         <li>
-          <a href="/about">
-            Acerca de
+          <a href='/about'>
+            Acerca de ...
           </a>
         </li>
+        <li><a class='dropdown-trigger' href='#!' data-target='dropdownMenu'>
+            Dropdown<i class='material-icons right'>arrow_drop_down</i>
+          </a></li>
       </ul>
-      <!-- Barra de Navegación Responsiva-->
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger">
-        <i class="material-icons">menu</i>
+      <!-- Barra de Navegación Movil -->
+      <a href='#' data-target='nav-mobile' class='sidenav-trigger'>
+        <i class='material-icons'>menu</i>
       </a>
-      <ul class="sidenav" id="nav-mobile">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/about">Acerca de...</a></li>
+      <ul class='sidenav' id='nav-mobile'>
+        <li><a href='/'>Inicio</a></li>
+        <li><a href='/projects'>
+            <i class='large material-icons' style='margin: 2px;'>list</i>
+            Listar Proyectos</a></li>
+        <li class='divider'></li>
+        <li><a href='/projects/add'>
+            <i class='large material-icons' style='margin: 2px;'>add_box</i>
+            Crear Proyecto</a></li>
+        <li><a href='/about'>Acerca de ...</a></li>
       </ul>
     </div>
   </div>
